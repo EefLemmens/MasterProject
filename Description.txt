@@ -1,0 +1,113 @@
+Masterproject Eef Lemmens
+Outlier detection in process data by using statistical methods.
+
+This read me file will explain the programs in this repository.
+
+The six datasets that are used are:
+(See map Data)
+Sepsis_Cases.csv
+Hospital_log.csv
+BPI_Challenge_2012.csv
+BPI Challenge 2017.csv
+Road_Traffic_Fine_Management_Process.csv
+Hospital_Billing.csv
+
+Making Time series:
+	Events per day.py:
+		Input: Original event log in csv and the date of the first activity in the log (start date) and the date of the last activity in the log 
+		(end date).
+		Functionality: Counting the number of events per day.
+		Output: A csv file with the time series of events per day.
+	
+	Number of case variants.py:
+		Input: Original event log in csv and the date of the first activity in the log (start date) and the date of the last activity in the log 
+		(end date).
+		Functionality: Counting the number of case variants that happen on a certain day.
+		Output: A csv file with the time series of number of case variants on a day.
+		
+	Duration start.py:
+		Input: Original event log, but ordered in excel (the files with _2.csv at the end) and the date of the first activity in the log (start 
+		date) and the date of the last activity in the log (end date).
+		Functionality: Checking for every case what the start date is and calculating the average duration of all cases with the same start date.
+		These averages are put in a time series.
+		Output: A csv file with the time series of the average duration of cases.
+		
+	Find activities.py:
+		Input: Original event log in csv.
+		Functionality: Look for all distinct activities in a log.
+		Output: A csv file with a list of all distinct activities.
+		
+	Duration activities.py:
+		Input: Original event log in csv, csv file with all distinct activities, and the date of the first activity in the log (start date) and 
+		the date of the last activity in the log (end date).
+		Functionality: 
+		1. Looking for every event what the end date is and calculating the average duration of all events with the same end date.
+		2. Looking per different activity what the end date is for every event with that activity name and calculating the average of all events
+		   with the same activity name and same end date.
+		Output:
+		1. A csv file with a time series of the average duration of events.
+		2. A csv file with for every activity a time series with the average duration of the events with this activity name.
+	
+	Duration all activities.py:
+		Input: Original event log, but ordered in excel (the files with _2.csv at the end), the csv file with all distinct activities, and the 
+		date of the first activity in the log (start date) and the date of the last activity in the log (end date).
+		Functionality: 
+		1. Determine for every case the duration.
+		2. Making a list for every activity with the dates that this activity occurs.
+		3. Making a list for every activity with the cases in which this activity occurs.
+		Output:
+		1. Csv with the durations of the cases (dur_for_now)
+		2. Csv with the list for every activity with the dates that this activity occurs (Datesactivities)
+		3. Csv with the list for every activity with the cases in which this activity occurs (Thisone)
+		
+	Duration uitrekenen.py:
+	This program is build on the results of Duration all activities.py
+		Input: Thisone, Dur_for_now, Datesactivities, the csv file with all distinct activities, and the date of the first activity in the log 
+		(start date) and the date of the last activity in the log (end date).
+		Functionality: Calculating for every activity the average case duration if that activity is on a certain date.
+		Output: Csv file with for every activity a time series with the average case duration if that activity is on a certain day.
+	
+
+Outlier detection:
+	Classification.py: 
+		Input: Time series, a "check" if the time series has been classified before as weekly pattern.
+		Functionality: This is a class used for classifying time series into five classes. This class is used by Outlier detection.py
+		Output: A Classification
+
+	Outlier detection.py: 
+		Input: Any number of time series of the same length in a csv file. 
+		Functionality: The program first classifies the time series by using classification.py and afterwards applies the appropriate outlier 
+		detection algorithm and this creates a new time series with the outliers. 
+		Output: Two csv files; one with only the outliers time series for every input time series and one with both the original time series 
+		and the outliers time series for every input time series.
+
+Get Case IDs:
+	Case Variants Over Time.py:
+		Input: An outlier time series from "Number of Case Variants" (for any of the six datasets) in csv and the original event log in csv.
+		Functionality:  Checks if a case has an activity on a day for which the value is an outlier. If yes, this case is an outlier. 
+		Creates the "Number of Case Variants per Day" event logs.
+		Output: Two csv files; one with the event log for all cases that are classified as an outlier, and one with the event log for all 
+		cases that are not classified as an outlier.
+	
+	Events per day.py:
+		Input: An outlier time series from "Events Per Day" (for any of the six datasets) in csv and the original event log in csv.
+		Functionality: Checks if a case has an activity on a day for which the value is an outlier. If yes, this case is an outlier.
+		Output: Two csv files; one with the event log for all cases that are classified as an outlier, and one with the event log for all 
+		cases that are not classified as an outlier.
+		
+	Duration start.py:
+		Input: An outlier time series from "Duration Start" (for any of the six datasets) in csv and the original event log in csv.
+		Functionality: Checks if a case started on a day for which the value is an outlier. If yes, this case is an outlier. Creates the
+		"Duration of Cases" event logs.
+		Output: Two csv files; one with the event log for all cases that are classified as an outlier, and one with the event log for all 
+		cases that are not classified as an outlier.
+	
+	Durationactivities.py:
+		Input: An outlier time series from "Durationactivities" (Only for BPIC 2017) in csv and the original event log in csv.
+		Functionality: Checks if an activity ends on a day for which the value is an outlier. If yes, the case in which this activity is,
+		is an outlier.
+		Output: Two csv files; one with the event log for all cases that are classified as an outlier, and one with the event log for all 
+		cases that are not classified as an outlier.
+		
+		
+	
