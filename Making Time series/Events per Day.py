@@ -1,3 +1,5 @@
+#© Eef Lemmens
+
 #Importing libraries
 import re
 import csv
