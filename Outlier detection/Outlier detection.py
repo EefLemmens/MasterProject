@@ -1,3 +1,5 @@
+#© Eef Lemmens
+
 import csv
 import numpy as np
 import Classification as cf
