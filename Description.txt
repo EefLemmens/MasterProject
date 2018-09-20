@@ -1,3 +1,5 @@
+#© Eef Lemmens
+
 Masterproject Eef Lemmens
 Outlier detection in process data by using statistical methods.
 
