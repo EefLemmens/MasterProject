@@ -1,3 +1,5 @@
+#© Eef Lemmens
+
 import csv
 
 activities = []
