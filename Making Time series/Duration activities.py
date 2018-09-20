@@ -1,3 +1,5 @@
+#© Eef Lemmens
+
 import csv
 from datetime import datetime
 from datetime import timedelta, date
