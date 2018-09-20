@@ -1,3 +1,5 @@
+#© Eef Lemmens
+
 import re
 import csv
 import ast
